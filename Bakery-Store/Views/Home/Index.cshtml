@@ -1,0 +1,635 @@
+﻿
+@{
+    ViewBag.Title = "Pink Bakery";
+}
+
+<style>
+    .bakery-page {
+        font-family: Arial, sans-serif;
+        color: #65483f;
+    }
+
+    .bakery-hero {
+        background: #fff0f2;
+        padding: 65px 35px;
+        border-radius: 20px;
+        text-align: center;
+        margin-top: 25px;
+    }
+
+        .bakery-hero h1 {
+            font-size: 48px;
+            color: #dd7893;
+            font-weight: bold;
+        }
+
+        .bakery-hero p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+    .bakery-btn {
+        background: #e7809b;
+        color: white;
+        padding: 13px 28px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+    }
+
+    .bakery-title {
+        text-align: center;
+        margin: 55px 0 30px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+
+    .bakery-products {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 25px;
+        width: 100%;
+        margin: 30px auto;
+        clear: both;
+    }
+
+    .bakery-search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        margin: 35px auto;
+        flex-wrap: wrap;
+        clear: both;
+    }
+
+
+    .bakery-card {
+        border: 1px solid #f3dce1;
+        border-radius: 15px;
+        overflow: hidden;
+        text-align: center;
+        padding-bottom: 20px;
+        background: white;
+    }
+
+        .bakery-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .bakery-card h3 {
+            margin-top: 20px;
+        }
+
+    .bakery-price {
+        color: #e7809b;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .bakery-card button {
+        background: #e7809b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    @@media (max-width: 768px) {
+        .bakery-products {
+            grid-template-columns: 1fr;
+        }
+
+        .bakery-hero h1 {
+            font-size: 34px;
+        }
+    }
+
+    .cart-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 18px 0;
+        border-bottom: 1px solid #f2cbd5;
+    }
+
+        .cart-row button {
+            background: #e7809b;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            margin: 3px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+    #bakery-cart h2 {
+        color: #dd7893;
+        margin-bottom: 20px;
+    }
+
+    #bakery-cart h3 {
+        margin: 25px 0;
+        color: #65483f;
+    }
+
+    /* THANH TÌM KIẾM PINK BAKERY */
+
+    .bakery-search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin: 35px auto 45px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+        .bakery-search input {
+            width: 400px;
+            max-width: 100%;
+        }
+
+        .bakery-search select {
+            width: 220px;
+        }
+
+        .bakery-search input,
+        .bakery-search select {
+            height: 50px;
+            padding: 10px 18px;
+            border: 1px solid #f1c5d0;
+            border-radius: 12px;
+            background: white;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+            .bakery-search input:focus,
+            .bakery-search select:focus {
+                border-color: #e7809b;
+                box-shadow: 0 0 0 3px #fce0e8;
+            }
+
+    /* FORM ĐẶT HÀNG PINK BAKERY */
+
+    .bakery-checkout {
+        max-width: 650px;
+        margin: 50px auto;
+        padding: 40px;
+        background: #fff0f4;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(231, 128, 155, 0.12);
+    }
+
+        .bakery-checkout h2 {
+            text-align: center;
+            color: #dd7893;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .bakery-checkout > p {
+            text-align: center;
+            color: #795a61;
+            margin-bottom: 30px;
+        }
+
+        .bakery-checkout .form-group {
+            margin-bottom: 20px;
+        }
+
+        .bakery-checkout label {
+            display: block;
+            font-weight: bold;
+            color: #65483f;
+            margin-bottom: 8px;
+        }
+
+        .bakery-checkout input,
+        .bakery-checkout textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #f1c5d0;
+            border-radius: 10px;
+            background: white;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+            .bakery-checkout input:focus,
+            .bakery-checkout textarea:focus {
+                outline: none;
+                border-color: #e7809b;
+                box-shadow: 0 0 0 3px #fce0e8;
+            }
+
+        .bakery-checkout .bakery-btn {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            font-size: 16px;
+        }
+
+    /* PINK BAKERY - ACCOUNT */
+
+    .pink-account {
+        max-width: 480px;
+        margin: 65px auto;
+        padding: 35px;
+        background: #fff0f4;
+        border-radius: 22px;
+        box-shadow: 0 6px 25px rgba(231,128,155,0.15);
+        text-align: center;
+    }
+
+        .pink-account h2 {
+            color: #dd7893;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .pink-account p {
+            color: #80666c;
+            margin: 12px 0 25px;
+        }
+
+    .account-tabs {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+        .account-tabs button {
+            flex: 1;
+        }
+
+    .pink-account h3 {
+        color: #704d56;
+        margin-bottom: 20px;
+    }
+
+    .pink-account input {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        margin-bottom: 15px;
+        border: 1px solid #efc5cf;
+        border-radius: 10px;
+        background: white;
+        box-sizing: border-box;
+    }
+
+        .pink-account input:focus {
+            outline: none;
+            border-color: #e7809b;
+        }
+
+    .pink-account button {
+        background: #e7809b;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+        .pink-account button:hover {
+            background: #d36585;
+        }
+
+    .pink-account form button {
+        width: 100%;
+    }
+
+    #accountWelcome {
+        padding: 20px;
+    }
+
+</style>
+
+<div class="bakery-page">
+
+    <section class="bakery-hero">
+        <h1>Pink Bakery</h1>
+
+        <h2>Sweet Moments, Happy Life!</h2>
+
+        <p>
+            Welcome to Pink Bakery!
+            Nơi mỗi chiếc bánh mang theo một chút
+            ngọt ngào và thật nhiều yêu thương.
+        </p>
+
+        <a href="#products" class="bakery-btn">
+            Khám phá sản phẩm
+        </a>
+    </section>
+
+    <h2 class="bakery-title" id="products">
+        🧁 SẢN PHẨM NỔI BẬT
+    </h2>
+
+
+
+
+    <!-- THANH TÌM KIẾM PINK BAKERY -->
+    <div class="bakery-search">
+        <input type="text"
+               id="searchCake"
+               placeholder="🔍 Tìm kiếm bánh yêu thích..."
+               oninput="filterCakes()" />
+
+
+        <select id="categoryCake" onchange="filterCakes()">
+            <option value="all">Tất cả sản phẩm</option>
+            <option value="coffee">Bánh cà phê</option>
+            <option value="cheesecake">Bánh phô mai</option>
+            <option value="mousse">Bánh mousse</option>
+            <option value="pastry">Bánh ngọt khác</option>
+        </select>
+
+    </div>
+
+    <div class="bakery-products">
+
+
+
+
+        <!-- BÁNH TIRAMISU -->
+        <div class="bakery-card"
+             data-name="tiramisu cake bánh tiramisu"
+             data-category="coffee">
+
+
+            <img src="@Url.Content("~/images/BANH_TIRAMISU.jpg")"
+                 alt="Bánh Tiramisu">
+
+
+            <h3>Tiramisu Cake</h3>
+            <p>Bánh tiramisu thơm vị cà phê</p>
+            <p class="bakery-price">39.000đ</p>
+
+            <button onclick="addCart('Tiramisu Cake')">
+                Thêm vào giỏ hàng
+            </button>
+        </div>
+
+        <!-- BÁNH PHÔ MAI TRÀ XANH -->
+
+        <div class="bakery-card"
+             data-name="matcha cheesecake bánh phô mai trà xanh"
+             data-category="cheesecake">
+
+
+
+            <img src="@Url.Content("~/images/BANH_PHO_MAI_TRA_XANH.jpg")"
+                 alt="Bánh phô mai trà xanh">
+
+
+            <h3>Matcha Cheesecake</h3>
+            <p>Bánh phô mai vị trà xanh</p>
+            <p class="bakery-price">35.000đ</p>
+
+            <button onclick="addCart('Matcha Cheesecake')">
+                Thêm vào giỏ hàng
+            </button>
+        </div>
+
+        <!-- BÁNH PHÔ MAI CHANH DÂY -->
+
+        <div class="bakery-card"
+             data-name="passion fruit cheesecake bánh phô mai chanh dây"
+             data-category="cheesecake">
+
+
+
+            <img src="@Url.Content("~/images/BANH_PHO_MAI_CHANH_DAY.jpg")"
+                 alt="Bánh phô mai chanh dây">
+
+
+            <h3>Passion Fruit Cheesecake</h3>
+            <p>Bánh phô mai chanh dây chua ngọt</p>
+            <p class="bakery-price">35.000đ</p>
+
+            <button onclick="addCart('Passion Fruit Cheesecake')">
+                Thêm vào giỏ hàng
+            </button>
+        </div>
+
+        <!-- BÁNH MOUSSE CACAO -->
+
+        <div class="bakery-card"
+             data-name="cacao mousse bánh mousse cacao"
+             data-category="mousse">
+
+
+
+            <img src="@Url.Content("~/images/MOUSSE_CA_CAO.jpg")"
+                 alt="Bánh mousse cacao">
+
+
+            <h3>Cacao Mousse</h3>
+            <p>Bánh mousse cacao mềm mịn</p>
+            <p class="bakery-price">35.000đ</p>
+
+            <button onclick="addCart('Cacao Mousse')">
+                Thêm vào giỏ hàng
+            </button>
+        </div>
+
+        <!-- BÁNH CROISSANT -->
+        <div class="bakery-card"
+             data-name="butter croissant bánh sừng bò"
+             data-category="pastry">
+
+
+
+
+            <img src="@Url.Content("~/images/CROISAINT.jpg")"
+                 alt="Bánh Croissant">
+
+
+
+
+            <h3>Butter Croissant</h3>
+            <p>Bánh sừng bò thơm bơ</p>
+            <p class="bakery-price">29.000đ</p>
+
+            <button onclick="addCart('Butter Croissant')">
+                Thêm vào giỏ hàng
+            </button>
+        </div>
+
+        <!-- BÁNH PHÔ MAI CARAMEL -->
+
+        <div class="bakery-card"
+             data-name="caramel cheesecake bánh phô mai caramel"
+             data-category="cheesecake">
+
+
+
+            <img src="@Url.Content("~/images/CARAMELPHOMAI.jpg")"
+                 alt="Bánh phô mai caramel">
+
+
+            <h3>Caramel Cheesecake</h3>
+            <p>Bánh phô mai vị caramel</p>
+            <p class="bakery-price">35.000đ</p>
+
+            <button onclick="addCart('Caramel Cheesecake')">
+                Thêm vào giỏ hàng
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- GIỎ HÀNG PINK BAKERY -->
+<section id="bakery-cart"
+         style="margin:60px 0; padding:25px;
+                background:#fff0f2; border-radius:20px;">
+</section>
+
+<!-- FORM ĐẶT HÀNG PINK BAKERY -->
+<section class="bakery-checkout" id="checkout-form" style="display:none;">
+
+    <h2>🎀 THÔNG TIN ĐẶT HÀNG</h2>
+    <p>Vui lòng điền thông tin để Pink Bakery giao bánh đến bạn nhé!</p>
+
+    <form id="orderForm" onsubmit="submitBakeryOrder(event)">
+
+        <div class="form-group">
+            <label>Họ và tên khách hàng</label>
+            <input type="text" id="customerName"
+                   placeholder="Nhập họ và tên" required />
+        </div>
+
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="tel" id="customerPhone"
+                   placeholder="Nhập số điện thoại"
+                   pattern="[0-9]{10,11}"
+                   required />
+        </div>
+
+        <div class="form-group">
+            <label>Địa chỉ giao hàng</label>
+            <input type="text" id="customerAddress"
+                   placeholder="Nhập địa chỉ nhận bánh" required />
+        </div>
+
+        <div class="form-group">
+            <label>Ghi chú đơn hàng</label>
+            <textarea id="orderNote" rows="3"
+                      placeholder="Ví dụ: Viết chữ lên bánh, thời gian giao..."></textarea>
+        </div>
+
+        <button type="submit" class="bakery-btn">
+            Xác nhận đặt hàng 💗
+        </button>
+
+    </form>
+</section>
+
+<!-- ĐĂNG NHẬP - ĐĂNG KÝ PINK BAKERY -->
+<section class="pink-account" id="pink-account">
+
+    <h2>🎀 PINK BAKERY ACCOUNT</h2>
+    <p>Đăng nhập hoặc tạo tài khoản để mua bánh nhé!</p>
+
+    <div id="accountForms">
+
+        <div class="account-tabs">
+            <button type="button"
+                    onclick="showAccountTab('login')">
+                Đăng nhập
+            </button>
+
+            <button type="button"
+                    onclick="showAccountTab('register')">
+                Đăng ký
+            </button>
+        </div>
+
+        <!-- FORM ĐĂNG NHẬP -->
+        <form id="loginForm"
+              onsubmit="loginBakery(event)">
+
+            <h3>Đăng nhập</h3>
+
+            <input type="email"
+                   id="loginEmail"
+                   placeholder="Email"
+                   autocomplete="email"
+                   required>
+
+            <input type="password"
+                   id="loginPassword"
+                   placeholder="Mật khẩu"
+                   autocomplete="current-password"
+                   required>
+
+            <button type="submit">
+                Đăng nhập
+            </button>
+        </form>
+
+        <!-- FORM ĐĂNG KÝ -->
+        <form id="registerForm"
+              onsubmit="registerBakery(event)"
+              style="display:none;">
+
+            <h3>Đăng ký tài khoản</h3>
+
+            <input type="text"
+                   id="registerName"
+                   placeholder="Họ và tên"
+                   autocomplete="name"
+                   required>
+
+            <input type="email"
+                   id="registerEmail"
+                   placeholder="Email"
+                   autocomplete="email"
+                   required>
+
+            <input type="password"
+                   id="registerPassword"
+                   placeholder="Mật khẩu (tối thiểu 6 ký tự)"
+                   autocomplete="new-password"
+                   minlength="6"
+                   required>
+
+            <button type="submit">
+                Tạo tài khoản
+            </button>
+        </form>
+    </div>
+
+    <!-- SAU KHI ĐĂNG NHẬP -->
+    <div id="accountWelcome" style="display:none;">
+        <h3 id="welcomeUser"></h3>
+
+        <button type="button" onclick="logoutBakery()">
+            Đăng xuất
+        </button>
+    </div>
+
+</section>
+
+
+<script src="@Url.Content("~/Scripts/pinkbakery.js")"></script>
+
+
